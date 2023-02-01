@@ -127,20 +127,11 @@ func OverrideWithHTTPHandler(existing, other http.Handler) (result http.Handler)
 	return existing
 }
 
-func OverrideWithStringSlice(existing, other []string) (result []string) {
+func OverrideWithSlice[K string | uint16 | uint32](existing, other []K) (result []K) {
 	if other == nil {
 		return existing
 	}
-	result = make([]string, len(other))
-	copy(result, other)
-	return result
-}
-
-func OverrideWithUint16Slice(existing, other []uint16) (result []uint16) {
-	if other == nil {
-		return existing
-	}
-	result = make([]uint16, len(other))
+	result = make([]K, len(other))
 	copy(result, other)
 	return result
 }

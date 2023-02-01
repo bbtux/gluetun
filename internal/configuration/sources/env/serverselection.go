@@ -50,7 +50,7 @@ func (s *Source) readServerSelection(vpnProvider, vpnType string) (
 
 	if csv := getCleanedEnv("SERVER_NUMBER"); csv != "" {
 		numbersStrings := strings.Split(csv, ",")
-		numbers := make([]uint16, len(numbersStrings))
+		numbers := make([]uint32, len(numbersStrings))
 		for i, numberString := range numbersStrings {
 			const base, bitSize = 10, 16
 			number, err := strconv.ParseInt(numberString, base, bitSize)
@@ -61,7 +61,7 @@ func (s *Source) readServerSelection(vpnProvider, vpnType string) (
 				return ss, fmt.Errorf("%w: %d must be between 0 and 65535",
 					ErrServerNumberNotValid, number)
 			}
-			numbers[i] = uint16(number)
+			numbers[i] = uint32(number)
 		}
 		ss.Numbers = numbers
 	}

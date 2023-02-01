@@ -18,7 +18,7 @@ type Server struct {
 	City        string   `json:"city,omitempty"`
 	ISP         string   `json:"isp,omitempty"`
 	Owned       bool     `json:"owned,omitempty"`
-	Number      uint16   `json:"number,omitempty"`
+	Number      uint32   `json:"number,omitempty"`
 	ServerName  string   `json:"server_name,omitempty"`
 	Hostname    string   `json:"hostname,omitempty"`
 	TCP         bool     `json:"tcp,omitempty"`

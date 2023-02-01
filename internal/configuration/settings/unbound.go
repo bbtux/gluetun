@@ -95,7 +95,7 @@ func (u Unbound) validate() (err error) {
 
 func (u Unbound) copy() (copied Unbound) {
 	return Unbound{
-		Providers:             helpers.CopyStringSlice(u.Providers),
+		Providers:             helpers.CopySlice(u.Providers),
 		Caching:               helpers.CopyBoolPtr(u.Caching),
 		IPv6:                  helpers.CopyBoolPtr(u.IPv6),
 		VerbosityLevel:        helpers.CopyUint8Ptr(u.VerbosityLevel),
@@ -107,7 +107,7 @@ func (u Unbound) copy() (copied Unbound) {
 }
 
 func (u *Unbound) mergeWith(other Unbound) {
-	u.Providers = helpers.MergeStringSlices(u.Providers, other.Providers)
+	u.Providers = helpers.MergeSlices(u.Providers, other.Providers)
 	u.Caching = helpers.MergeWithBool(u.Caching, other.Caching)
 	u.IPv6 = helpers.MergeWithBool(u.IPv6, other.IPv6)
 	u.VerbosityLevel = helpers.MergeWithUint8(u.VerbosityLevel, other.VerbosityLevel)
@@ -118,7 +118,7 @@ func (u *Unbound) mergeWith(other Unbound) {
 }
 
 func (u *Unbound) overrideWith(other Unbound) {
-	u.Providers = helpers.OverrideWithStringSlice(u.Providers, other.Providers)
+	u.Providers = helpers.OverrideWithSlice(u.Providers, other.Providers)
 	u.Caching = helpers.OverrideWithBool(u.Caching, other.Caching)
 	u.IPv6 = helpers.OverrideWithBool(u.IPv6, other.IPv6)
 	u.VerbosityLevel = helpers.OverrideWithUint8(u.VerbosityLevel, other.VerbosityLevel)

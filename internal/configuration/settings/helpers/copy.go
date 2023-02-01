@@ -141,22 +141,12 @@ func CopyIPPrefix(original netaddr.IPPrefix) (copied netaddr.IPPrefix) {
 	return copied
 }
 
-func CopyStringSlice(original []string) (copied []string) {
+func CopySlice[K string | uint16 | uint32](original []K) (copied []K) {
 	if original == nil {
 		return nil
 	}
 
-	copied = make([]string, len(original))
-	copy(copied, original)
-	return copied
-}
-
-func CopyUint16Slice(original []uint16) (copied []uint16) {
-	if original == nil {
-		return nil
-	}
-
-	copied = make([]uint16, len(original))
+	copied = make([]K, len(original))
 	copy(copied, original)
 	return copied
 }
